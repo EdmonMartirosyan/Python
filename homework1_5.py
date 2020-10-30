@@ -12,4 +12,3 @@ def possible_turns(cell):
 
 
 print(possible_turns("E4"))
-
