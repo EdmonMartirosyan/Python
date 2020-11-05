@@ -8,7 +8,11 @@ def answer_queries(k, *query_counts):
             number += 1
         else:
             return number
+    while count > 0:
+        count -= k
+        number += 1
+    return number
 
 
-print(answer_queries(5, 10, 5, 5, 3, 2, 1))
+print(answer_queries(1, 100))
 
