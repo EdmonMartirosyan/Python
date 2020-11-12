@@ -12,6 +12,7 @@
 #         number += count // k
 #     return number+1
 #
+<<<<<<< HEAD
 # print(answer_queries(5, 5))
 
 
@@ -38,5 +39,24 @@ def non_decreasing_sequence(*nums):
 
 
 non_decreasing_sequence(2, 3, -5, 7)
+=======
+#
+# print(answer_queries(5, 10, 5, 5, 3, 2, 1))
+
+#2
+def non_decreasing_sequence(*nums):
+    nums_list = list(nums)
+    set_ = set()
+    for i in range(len(nums_list)):
+        if nums_list != sorted(nums_list):
+            nums_list[i] = -nums_list[i]
+        else:
+            set_.add(tuple(nums_list))
+    if set_:
+        print("Yes", list(*set_), sep="\n")
+    else:
+        print("No")
+>>>>>>> 384f16298b88545275849deba9ff78d8c70b6791
 
 
+non_decreasing_sequence(1, 1, 0)
