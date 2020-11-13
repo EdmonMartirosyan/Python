@@ -14,12 +14,8 @@
 
 #2
 def func(n):
-    count = 0
-    for i in range(n+1):
-        if "2" in str(i):
-            count += str(i).count("2")
-    return count
+    lst = [j for i in range(n+1) for j in str(i)]
+    return lst.count("2")
 
 
 print(func(22))
-
