@@ -38,7 +38,7 @@ def f(number):
 
 def digitsProduct(product):
     if len(str(product)) == 1:
-        return int('1' + str(product))
+        return product
     number = ''
     lst = f(product)
     if len(lst) == 1:
@@ -55,8 +55,11 @@ def digitsProduct(product):
                 number += str(lst[i - 1])
         else:
             flag = True
-    list(number).sort()
-    return int(number)
-
-
+    lst_ = list(map(int, list(number)))
+    new_number = ''
+    for el in sorted(lst_):
+    	new_number += str(el)
+    return int(new_number)
+    
+    
 print(digitsProduct(450))
