@@ -10,13 +10,4 @@
 # 
 # print(number_of_digits(432))
 
-#2
-def sum_numbers(lst, n):
-    set_ = set()
-    for i in range(len(lst)):
-        if n - lst[i] in lst:
-            set_.add((lst[i], n - lst[i]))
-    return
 
-
-print(sum_numbers([5, 2, 2, 5, 3],8))
