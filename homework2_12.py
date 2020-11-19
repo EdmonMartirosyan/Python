@@ -14,15 +14,3 @@
 #
 # print_numbers(9)
 
-
-#2
-def lucky_number(lst):
-    for i in range(len(lst)):
-        if i == lst[i]:
-            return lst[i]
-    else:
-        return -1
-
-
-print(lucky_number([5, 3, 1, 2, 4, 10]))
-
