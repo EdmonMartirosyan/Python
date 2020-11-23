@@ -16,7 +16,7 @@ def search(matrix, number):
     for i in range(len(matrix)):
         j = 0
         k = len(matrix) - 1
-        while j < k:
+        while j <= k:
             mid = (j + k) // 2
             if matrix[i][mid] < number:
                 j = mid + 1
