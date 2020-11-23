@@ -14,15 +14,17 @@
 #
 # print_numbers(9)
 
-
 #2
 def lucky_number(lst):
-    for i in range(len(lst)):
-        if i == lst[i]:
-            return lst[i]
+    if lst[0] == len(lucky_number.list_1):
+        return lst[0]
     else:
-        return -1
+        new_list = lst[lst[0]-len(lucky_number.list_1):]
+        if len(new_list) == 0:
+            return -1
+        lucky_number.list_1 += lst[:lst[0]-len(lucky_number.list_1)]
+        return lucky_number(new_list)
 
 
-print(lucky_number([5, 3, 1, 2, 4, 10]))
-
+lucky_number.list_1 = []
+print(lucky_number([1, 2, 2, 5, 7]))
