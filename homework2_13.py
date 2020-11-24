@@ -1,11 +1,6 @@
 #1
 def strings(str1, str2):
-    if len(str1) == len(str2):
-        for el in str1:
-            if el not in str2:
-                return False
-        return True
-    return False
+    return sorted(list(str1)) == sorted(list(str2))
 
 
 print(strings("abvdj", "vjdab"))
