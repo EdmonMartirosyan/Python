@@ -4,16 +4,15 @@ class Weapon:
         self.damage = damage
         self.range = range
 
-    @staticmethod
-    def hit(actor, target):
+    def hit(self, actor, target):
         if target.hp != 0:
             if ((actor.pos_x - target.pos_x)**2 + (actor.pos_y - target.pos_y)**2)**0.5 <= actor.weapon.range:
                 target.get_damage(actor.weapon.damage)
             else:
-                print(f"target is too far for weapon {actor.weapon.name}")
+                print(f"target is too far for weapon {self.damage}")
         else:
             print("the enemy is already defeated")
-        print(f"enemy was hit from weapon {actor.weapon.name}, damage is {actor.weapon.damage}")
+        print(f"enemy was hit from weapon {self.name}, damage is {self.damage}")
 
     def __repr__(self):
         return self.name
@@ -26,8 +25,8 @@ class BaseCharacter:
         self.hp = hp
 
     def move(self, delta_x, delta_y):
-        self.pos_x = delta_x
-        self.pos_y = delta_y
+        self.pos_x += delta_x
+        self.pos_y += delta_y
 
     def is_alive(self):
         return bool(self.hp)
@@ -46,7 +45,7 @@ class BaseEnemy(BaseCharacter):
 
     def hit(self, target):
         if isinstance(target, MainHero):
-            Weapon.hit(self, target)
+            self.weapon.hit(self, target)
         else:
             print("i can hit only main hero")
 
@@ -65,7 +64,7 @@ class MainHero(BaseCharacter):
     def hit(self, target):
         if len(MainHero.weapons) != 0:
             if isinstance(target, BaseEnemy):
-                Weapon.hit(self, target)
+                self.weapon.hit(self, target)
             else:
                 print("i can hit only enemy")
         else:
@@ -98,7 +97,7 @@ class MainHero(BaseCharacter):
 weapon1 = Weapon("Короткый меч", 5, 1)
 weapon2 = Weapon("Длинный меч", 7, 2)
 weapon3 = Weapon("Лук", 3, 10)
-weapon4 = Weapon("Лазерная орбитальная пушка", 1000, 1000)
+weapon4 = Weapon("Лазерная орбитальная пушка", 499, 1000)
 princess = BaseCharacter(100, 100, 100)
 archer = BaseEnemy(50, 50, 100, weapon3)
 armored_swordsman = BaseEnemy(10, 10, 500, weapon2)
@@ -108,7 +107,10 @@ print(armored_swordsman.get_cords())
 main_hero = MainHero(0, 0, 200, "Arthur")
 main_hero.add_weapon(weapon4)
 main_hero.hit(princess)
+print(armored_swordsman.hp)
 main_hero.hit(armored_swordsman)
+print(armored_swordsman.hp)
+
 
 
 
