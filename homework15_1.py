@@ -7,7 +7,7 @@ class Weapon:
     def hit(self, actor, target):
         if target.hp != 0:
             if ((actor.pos_x - target.pos_x)**2 + (actor.pos_y - target.pos_y)**2)**0.5 <= actor.weapon.range:
-                target.get_damage(actor.weapon.damage)
+                target.get_damage(self.damage)
             else:
                 print(f"target is too far for weapon {self.damage}")
         else:
