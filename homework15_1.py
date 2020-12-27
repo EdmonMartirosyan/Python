@@ -55,14 +55,14 @@ class BaseEnemy(BaseCharacter):
 
 
 class MainHero(BaseCharacter):
-    weapons = []
     count = 0
     def __init__(self, pos_x, pos_y, hp, name):
         super().__init__(pos_x, pos_y, hp)
-        self.weapon = name
+        self.name = name
+        self.weapons = []
 
     def hit(self, target):
-        if len(MainHero.weapons) != 0:
+        if len(self.weapons) != 0:
             if isinstance(target, BaseEnemy):
                 self.weapon.hit(self, target)
             else:
@@ -73,20 +73,20 @@ class MainHero(BaseCharacter):
     def add_weapon(self, weapon):
         if isinstance(weapon, Weapon):
             print(f"picked up {weapon.name}")
-            MainHero.weapons.append(weapon)
+            self.weapons.append(weapon)
             self.weapon = weapon
         else:
             print("it’s not a weapon")
 
     def next_weapon(self):
         global count
-        if len(MainHero.weapons) == 0:
+        if len(self.weapons) == 0:
             print("“i am unarmed")
-        elif len(MainHero.weapons) == 1:
+        elif len(self.weapons) == 1:
             print("i have one weapon")
         else:
-            self.weapon = MainHero.weapons[count]
-            count = count + 1 if count < len(MainHero.weapons) else 0
+            self.weapon = self.weapons[count]
+            count = count + 1 if count < len(self.weapons) else 0
             print(f"i take weapon {self.weapon.name}")
 
     def heal(self, amount):
